@@ -1,0 +1,116 @@
+package Basic;
+
+import java.sql.Driver;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class Organiztion
+{
+	public static void main(String[] args) throws InterruptedException
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://demo.vtiger.com/vtigercrm/");
+		driver.findElement(By.xpath("//button[text()='Sign in']")).click();
+		driver.findElement(By.id("appnavigator")).click();
+		Thread.sleep(2000);
+		WebElement ele = driver.findElement(By.xpath("//span[text()=' MARKETING']"));
+		Actions a= new Actions(driver);
+		a.moveToElement(ele);
+		a.perform();
+		driver.findElement(By.xpath("(//span[text()=' Organizations'])[1]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("Accounts_listView_basicAction_LBL_ADD_RECORD")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("Accounts_editView_fieldName_accountname")).sendKeys("Qspider");
+		Thread.sleep(2000);
+		driver.findElement(By.id("Accounts_editView_fieldName_website")).sendKeys("www.vtiger.com");
+		Thread.sleep(2000);
+		driver.findElement(By.id("Accounts_editView_fieldName_phone")).sendKeys("7020667294");
+		Thread.sleep(2000);
+		driver.findElement(By.id("Accounts_editView_fieldName_tickersymbol")).sendKeys("abcd");
+		Thread.sleep(2000);
+		driver.findElement(By.id("Accounts_editView_fieldName_fax")).sendKeys("zzzzz");
+		Thread.sleep(2000);
+		driver.findElement(By.id("Accounts_editView_fieldName_account_id_create")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@name='accountname'])[2]")).sendKeys("Kia_sel");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@name='website'])[2]")).sendKeys("www.flipkart.com");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@name='phone'])[2]")).sendKeys("5454545916");
+		Thread.sleep(2000);
+		WebElement ele1 = driver.findElement(By.xpath("(//select[@name='assigned_user_id'])[2]"));
+		Select s1 = new Select(ele1);
+		s1.selectByValue("3");
+		driver.findElement(By.xpath("//strong[text()='Save']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='otherphone']")).sendKeys("7588847416");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='employees']")).sendKeys("800");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='email1']")).sendKeys("goldi232@gmail.com");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='email2']")).sendKeys("aish787@gmail.com");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='ownership']")).sendKeys("Mydemo");
+		Thread.sleep(2000);
+		WebElement ele2 = driver.findElement(By.xpath("//select[@name='industry']"));
+		Select s2 = new Select(ele2);
+		s2.selectByValue("Engineering");
+		WebElement ele3 = driver.findElement(By.xpath("//select[@name='rating']"));
+		Select s3 = new Select(ele3);
+		s3.selectByValue("Active");
+		WebElement ele4 = driver.findElement(By.xpath("//select[@name='accounttype']"));
+		Select s4 = new Select(ele4);
+		s4.selectByValue("Customer");
+		JavascriptExecutor j=(JavascriptExecutor)driver;
+		j.executeScript("window.scrollBy(0,200)");
+		driver.findElement(By.xpath("//input[@name='siccode']")).sendKeys("2345");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@name='emailoptout'])[2]")).click();
+		Thread.sleep(2000);
+	
+		driver.findElement(By.xpath("//input[@name='annual_revenue']")).sendKeys("30000");
+		Thread.sleep(2000);
+		WebElement ele5 = driver.findElement(By.xpath("//select[@name='assigned_user_id']"));
+		Select s5= new Select(ele5);
+		s5.selectByValue("3");
+		JavascriptExecutor j1=(JavascriptExecutor)driver;
+		j1.executeScript("window.scrollBy(0,100)");
+		driver.findElement(By.xpath("(//input[@name='notify_owner'])[2]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//textarea[@name='bill_street']")).sendKeys("bavdhan, pune");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//textarea[@name='ship_street']")).sendKeys("nanded, maharashta");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='bill_pobox']")).sendKeys("343556");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='ship_pobox']")).sendKeys("6789979");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='bill_city']")).sendKeys("pune");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='ship_city']")).sendKeys("nan");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@name='bill_state']")).sendKeys("maharashtra");
+		driver.findElement(By.xpath("//input[@name='ship_state']")).sendKeys("maharashtra");
+		driver.findElement(By.xpath("//input[@name='bill_code']")).sendKeys("431605");
+		driver.findElement(By.xpath("//input[@name='ship_code']")).sendKeys("111222");
+		driver.findElement(By.xpath("//input[@name='bill_country']")).sendKeys("India");
+		driver.findElement(By.xpath("//input[@name='ship_country']")).sendKeys("India");
+		driver.findElement(By.xpath("//textarea[@name='description']")).sendKeys("Write all data about organisations.");
+		driver.findElement(By.xpath("//button[text()='Save']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//li[@class='dropdown']")).click();
+		driver.findElement(By.linkText("Sign Out")).click();
+	}
+}
